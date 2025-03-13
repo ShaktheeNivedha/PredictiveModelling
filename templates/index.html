@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumption Prediction Dashboard</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+
+    <div id="main-content">
+        <div class="hero">
+            <h1>Predict and Optimize Resource Consumption</h1>
+            <p>Leverage cutting-edge models to forecast energy and water usage for a sustainable future.</p>
+        </div>
+
+        <div class="model-container">
+            <div class="select-model">Select Model
+                <div class="dropdown-content">
+                    <a href="#" onclick="showForm('energy-form')">Energy Consumption Prediction</a>
+                    <a href="#" onclick="showForm('water-form')">Water Consumption Prediction</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Energy Consumption Prediction Form -->
+    <div class="input-form" id="energy-form" style="display: none;">
+        <h2>Energy Consumption Prediction</h2>
+        
+        <label>Day of the Week:</label>
+        <input type="number" placeholder="Enter Day (0-6)">
+
+        <label>Month:</label>
+        <input type="number" placeholder="Enter Month (1-12)">
+
+        <label>Hour:</label>
+        <input type="number" placeholder="Enter Hour (0-23)">
+
+        <div class="radio-group">
+            <label class="question">Is it a weekend?</label>  <!-- Input Label -->
+            <div class="radio-option yes">
+                <input type="radio" id="yes" name="weekend" value="yes">
+                <label for="yes">Yes</label>
+            </div>
+            <div class="radio-option no">
+                <input type="radio" id="no" name="weekend" value="no">
+                <label for="no">No</label>
+            </div>
+        </div>
+        
+        <div class="radio-group">
+            <label class="question">Is it a holiday?</label>  <!-- Input Label -->
+            <div class="radio-option yes">
+                <input type="radio" id="holiday-yes" name="holiday" value="yes">
+                <label for="holiday-yes">Yes</label>
+            </div>
+            <div class="radio-option no">
+                <input type="radio" id="holiday-no" name="holiday" value="no">
+                <label for="holiday-no">No</label>
+            </div>
+        </div>
+
+        <label>Temperature (°C):</label>
+        <input type="number" step="0.01" placeholder="Enter Temperature">
+
+        <label>Humidity (%):</label>
+        <input type="number" step="0.01" placeholder="Enter Humidity">
+
+        <label>Wind Speed (m/s):</label>
+        <input type="number" step="0.01" placeholder="Enter Wind Speed">
+
+        <label>Solar Radiation (W/m²):</label>
+        <input type="number" step="0.01" placeholder="Enter Solar Radiation">
+
+        <label>Building Size (sq ft):</label>
+        <input type="number" step="1" placeholder="Enter Building Size">
+
+        <label>Number of Occupants:</label>
+        <input type="number" step="1" placeholder="Enter Number of Occupants">
+
+        <label>Building Type:</label>
+        <input type="number" placeholder="Enter Building Type">
+
+        <label>HVAC Usage (kWh):</label>
+        <input type="number" step="0.01" placeholder="Enter HVAC Usage">
+
+        <label>Lighting Usage (kWh):</label>
+        <input type="number" step="0.01" placeholder="Enter Lighting Usage">
+
+        <label>Appliance Load (kWh):</label>
+        <input type="number" step="0.01" placeholder="Enter Appliance Load">
+
+        <label>Previous Hour Consumption (kWh):</label>
+        <input type="number" step="0.01" placeholder="Enter Previous Hour Consumption">
+
+        <label>Previous Day Consumption (kWh):</label>
+        <input type="number" step="0.01" placeholder="Enter Previous Day Consumption">
+
+        <label>Previous Week Consumption (kWh):</label>
+        <input type="number" step="0.01" placeholder="Enter Previous Week Consumption">
+
+        <button onclick="hideForms()">Predict Consumption</button>
+    </div>
+
+    <!-- Water Consumption Prediction Form -->
+    <div class="input-form" id="water-form" style="display: none;">
+        <h2>Water Consumption Prediction</h2>
+        
+        <label>Day of the Week:</label>
+        <input type="number" placeholder="Enter Day (0-6)">
+
+        <label>Month:</label>
+        <input type="number" placeholder="Enter Month (1-12)">
+
+        <label>Temperature (°C):</label>
+        <input type="number" step="0.01" placeholder="Enter Temperature">
+
+        <label>Rainfall (mm):</label>
+        <input type="number" step="0.01" placeholder="Enter Rainfall">
+
+        <div class="radio-group">
+            <label class="question">Is it a holiday?</label>  <!-- Input Label -->
+            <div class="radio-option yes">
+                <input type="radio" id="holiday-yes" name="holiday" value="yes">
+                <label for="holiday-yes">Yes</label>
+            </div>
+            <div class="radio-option no">
+                <input type="radio" id="holiday-no" name="holiday" value="no">
+                <label for="holiday-no">No</label>
+            </div>
+        </div>
+        
+        <label>Previous Day's Water Consumption (Liters):</label>
+        <input type="number" step="0.01" placeholder="Enter Previous Consumption">
+
+        <label>Building Size (sq ft):</label>
+        <input type="number" step="1" placeholder="Enter Building Size">
+
+        <label>Number of Household Members:</label>
+        <input type="number" step="1" placeholder="Enter Number of Members">
+
+        <button onclick="hideForms()">Predict Consumption</button>
+    </div>
+
+    <script>
+        function showForm(formId) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('energy-form').style.display = 'none';
+            document.getElementById('water-form').style.display = 'none';
+
+            document.getElementById(formId).style.display = 'block';
+        }
+
+        function hideForms() {
+            document.getElementById('energy-form').style.display = 'none';
+            document.getElementById('water-form').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
