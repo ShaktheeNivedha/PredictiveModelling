@@ -1,13 +1,25 @@
+import os
 from flask import Flask, request, jsonify
-from flask_cors import CORS  # Import CORS
+from flask_cors import CORS
 import joblib
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)
 
-# Load trained models
-energy_model = joblib.load("C:/Users/Muthukumar/Desktop/deployment/project/Energy_consumption/rf_model_full.pkl")  # Energy consumption model
-water_model = joblib.load("C:/Users/Muthukumar/Desktop/deployment/project/Water_consumption/rf_model_full.pkl")  # Water consumption model
+# Get the directory of the current script
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Load trained models using relative paths
+energy_model_path = os.path.join(BASE_DIR, "Energy_consumption", "rf_model_full.pkl")
+water_model_path = os.path.join(BASE_DIR, "Water_consumption", "rf_model_full.pkl")
+
+try:
+    energy_model = joblib.load(energy_model_path)  # Energy consumption model
+    water_model = joblib.load(water_model_path)  # Water consumption model
+    print("Models loaded successfully!")
+except FileNotFoundError as e:
+    print(f"Error loading models: {e}")
+    raise e
 
 @app.route('/predict/energy', methods=['POST'])
 def predict_energy():
