@@ -1,6 +1,5 @@
-$(document).ready(function(){
-
-    $("#energy-form button").on("click", function(event){
+$(document).ready(function () {
+    $("#energy-form button").on("click", function (event) {
         event.preventDefault();
 
         let energyData = {
@@ -29,18 +28,18 @@ $(document).ready(function(){
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(energyData),
-            success: function(response){
-                if(response.error) {
-                    alert("Error: " + response.error);
-                } else {
-                    alert("Predicted Energy Consumption: " + response.prediction + " kWh");
-                }
+            success: function (response) {
+                $("#energy-form").hide();  // Hide the form
+                $("#prediction-result").html(
+                    `<h2>Predicted Energy Consumption</h2>
+                     <p><strong>${response.prediction} kWh</strong></p>
+                     <button onclick="resetForm()">Back</button>`
+                ).show();
             }
         });
     });
 
-    
-    $("#water-form button").on("click", function(event){
+    $("#water-form button").on("click", function (event) {
         event.preventDefault();
 
         let waterData = {
@@ -59,14 +58,20 @@ $(document).ready(function(){
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(waterData),
-            success: function(response){
-                if(response.error) {
-                    alert("Error: " + response.error);
-                } else {
-                    alert("Predicted Water Consumption: " + response.prediction + " liters");
-                }
+            success: function (response) {
+                $("#water-form").hide();  // Hide the form
+                $("#prediction-result").html(
+                    `<h2>Predicted Water Consumption</h2>
+                     <p><strong>${response.prediction} liters</strong></p>
+                     <button onclick="resetForm()">Back</button>`
+                ).show();
             }
         });
     });
-
 });
+
+// Function to reset the UI and go back to the main page
+function resetForm() {
+    $("#prediction-result").hide();
+    $("#main-content").show();
+}

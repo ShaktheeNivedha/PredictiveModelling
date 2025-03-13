@@ -36,78 +36,77 @@
         <h2>Energy Consumption Prediction</h2>
         
         <label>Day of the Week:</label>
-        <input type="number" placeholder="Enter Day (0-6)">
+        <input type="number" id="day_of_week_energy" placeholder="Enter Day (0-6)">
 
         <label>Month:</label>
-        <input type="number" placeholder="Enter Month (1-12)">
+        <input type="number" id="month_energy" placeholder="Enter Month (1-12)">
 
         <label>Hour:</label>
-        <input type="number" placeholder="Enter Hour (0-23)">
+        <input type="number" id="hour_energy" placeholder="Enter Hour (0-23)">
 
         <div class="radio-group">
-            <label class="question">Is it a weekend?</label>  <!-- Input Label -->
+            <label class="question">Is it a weekend?</label>
             <div class="radio-option yes">
-                <input type="radio" id="yes" name="weekend" value="yes">
-                <label for="yes">Yes</label>
+                <input type="radio" id="weekend_yes" name="weekend" value="1">
+                <label for="weekend_yes">Yes</label>
             </div>
             <div class="radio-option no">
-                <input type="radio" id="no" name="weekend" value="no">
-                <label for="no">No</label>
+                <input type="radio" id="weekend_no" name="weekend" value="0">
+                <label for="weekend_no">No</label>
             </div>
         </div>
         
         <div class="radio-group">
-            <label class="question">Is it a holiday?</label>  <!-- Input Label -->
+            <label class="question">Is it a holiday?</label>
             <div class="radio-option yes">
-                <input type="radio" id="holiday-yes" name="holiday" value="yes">
-                <label for="holiday-yes">Yes</label>
+                <input type="radio" id="holiday_yes" name="holiday" value="1">
+                <label for="holiday_yes">Yes</label>
             </div>
             <div class="radio-option no">
-                <input type="radio" id="holiday-no" name="holiday" value="no">
-                <label for="holiday-no">No</label>
+                <input type="radio" id="holiday_no" name="holiday" value="0">
+                <label for="holiday_no">No</label>
             </div>
         </div>
-
         <label>Temperature (°C):</label>
-        <input type="number" step="0.01" placeholder="Enter Temperature">
+        <input type="number" id="temperature_energy" step="0.01" placeholder="Enter Temperature">
 
         <label>Humidity (%):</label>
-        <input type="number" step="0.01" placeholder="Enter Humidity">
+        <input type="number" id="humidity_energy" step="0.01" placeholder="Enter Humidity">
 
         <label>Wind Speed (m/s):</label>
-        <input type="number" step="0.01" placeholder="Enter Wind Speed">
+        <input type="number" id="wind_speed_energy" step="0.01" placeholder="Enter Wind Speed">
 
         <label>Solar Radiation (W/m²):</label>
-        <input type="number" step="0.01" placeholder="Enter Solar Radiation">
+        <input type="number" id="solar_radiation_energy" step="0.01" placeholder="Enter Solar Radiation">
 
         <label>Building Size (sq ft):</label>
-        <input type="number" step="1" placeholder="Enter Building Size">
+        <input type="number" id="building_size_energy" step="1" placeholder="Enter Building Size">
 
         <label>Number of Occupants:</label>
-        <input type="number" step="1" placeholder="Enter Number of Occupants">
+        <input type="number" id="occupants_energy" step="1" placeholder="Enter Number of Occupants">
 
         <label>Building Type:</label>
-        <input type="number" placeholder="Enter Building Type">
+        <input type="number" id="building_type_energy" placeholder="Enter Building Type">
 
         <label>HVAC Usage (kWh):</label>
-        <input type="number" step="0.01" placeholder="Enter HVAC Usage">
+        <input type="number" id="hvac_usage_energy" step="0.01" placeholder="Enter HVAC Usage">
 
         <label>Lighting Usage (kWh):</label>
-        <input type="number" step="0.01" placeholder="Enter Lighting Usage">
+        <input type="number" id="lighting_usage_energy" step="0.01" placeholder="Enter Lighting Usage">
 
         <label>Appliance Load (kWh):</label>
-        <input type="number" step="0.01" placeholder="Enter Appliance Load">
+        <input type="number" id="appliance_load_energy" step="0.01" placeholder="Enter Appliance Load">
 
         <label>Previous Hour Consumption (kWh):</label>
-        <input type="number" step="0.01" placeholder="Enter Previous Hour Consumption">
+        <input type="number" id="prev_hour_energy" step="0.01" placeholder="Enter Previous Hour Consumption">
 
         <label>Previous Day Consumption (kWh):</label>
-        <input type="number" step="0.01" placeholder="Enter Previous Day Consumption">
+        <input type="number" id="prev_day_energy" step="0.01" placeholder="Enter Previous Day Consumption">
 
         <label>Previous Week Consumption (kWh):</label>
-        <input type="number" step="0.01" placeholder="Enter Previous Week Consumption">
+        <input type="number" id="prev_week_energy" step="0.01" placeholder="Enter Previous Week Consumption">
 
-        <button onclick="hideForms()">Predict Consumption</button>
+        <button onclick="predictEnergy()">Predict Consumption</button>
     </div>
 
     <!-- Water Consumption Prediction Form -->
@@ -115,39 +114,33 @@
         <h2>Water Consumption Prediction</h2>
         
         <label>Day of the Week:</label>
-        <input type="number" placeholder="Enter Day (0-6)">
+        <input type="number" id="day_of_week_water" placeholder="Enter Day (0-6)">
 
         <label>Month:</label>
-        <input type="number" placeholder="Enter Month (1-12)">
+        <input type="number" id="month_water" placeholder="Enter Month (1-12)">
 
         <label>Temperature (°C):</label>
-        <input type="number" step="0.01" placeholder="Enter Temperature">
+        <input type="number" id="temperature_water" step="0.01" placeholder="Enter Temperature">
 
         <label>Rainfall (mm):</label>
-        <input type="number" step="0.01" placeholder="Enter Rainfall">
+        <input type="number" id="rainfall_water" step="0.01" placeholder="Enter Rainfall">
 
+        <label>Is it a holiday?</label>
         <div class="radio-group">
-            <label class="question">Is it a holiday?</label>  <!-- Input Label -->
-            <div class="radio-option yes">
-                <input type="radio" id="holiday-yes" name="holiday" value="yes">
-                <label for="holiday-yes">Yes</label>
-            </div>
-            <div class="radio-option no">
-                <input type="radio" id="holiday-no" name="holiday" value="no">
-                <label for="holiday-no">No</label>
-            </div>
+            <label><input type="radio" id="holiday_yes_water" name="holiday_water" value="1"> Yes</label>
+            <label><input type="radio" id="holiday_no_water" name="holiday_water" value="0"> No</label>  
         </div>
         
         <label>Previous Day's Water Consumption (Liters):</label>
-        <input type="number" step="0.01" placeholder="Enter Previous Consumption">
+        <input type="number" id="prev_day_water" step="0.01" placeholder="Enter Previous Consumption">
 
         <label>Building Size (sq ft):</label>
-        <input type="number" step="1" placeholder="Enter Building Size">
+        <input type="number" id="building_size_water" step="1" placeholder="Enter Building Size">
 
         <label>Number of Household Members:</label>
-        <input type="number" step="1" placeholder="Enter Number of Members">
+        <input type="number" id="household_members_water" step="1" placeholder="Enter Number of Members">
 
-        <button onclick="hideForms()">Predict Consumption</button>
+        <button onclick="predictWater()">Predict Consumption</button>
     </div>
 
     <script>
@@ -164,6 +157,85 @@
             document.getElementById('water-form').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
         }
+
+        async function predictEnergy() {
+            const data = {
+                day_of_week: parseFloat(document.getElementById('day_of_week_energy').value),
+                month: parseFloat(document.getElementById('month_energy').value),
+                hour: parseFloat(document.getElementById('hour_energy').value),
+                weekend: document.querySelector('input[name="weekend"]:checked').value,
+                holiday: document.querySelector('input[name="holiday"]:checked').value,
+                temperature: parseFloat(document.getElementById('temperature_energy').value),
+                humidity: parseFloat(document.getElementById('humidity_energy').value),
+                wind_speed: parseFloat(document.getElementById('wind_speed_energy').value),
+                solar_radiation: parseFloat(document.getElementById('solar_radiation_energy').value),
+                building_size: parseFloat(document.getElementById('building_size_energy').value),
+                occupants: parseFloat(document.getElementById('occupants_energy').value),
+                building_type: parseFloat(document.getElementById('building_type_energy').value),
+                hvac_usage: parseFloat(document.getElementById('hvac_usage_energy').value),
+                lighting_usage: parseFloat(document.getElementById('lighting_usage_energy').value),
+                appliance_load: parseFloat(document.getElementById('appliance_load_energy').value),
+                prev_hour: parseFloat(document.getElementById('prev_hour_energy').value),
+                prev_day: parseFloat(document.getElementById('prev_day_energy').value),
+                prev_week: parseFloat(document.getElementById('prev_week_energy').value)
+            };
+
+            try {
+                const response = await fetch('/predict/energy', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+                if (result.error) {
+                    alert(`Error: ${result.error}`);
+                } else {
+                    alert(`Predicted Energy Consumption: ${result.prediction}`);
+                }
+            } catch (error) {
+                alert(`Error: ${error.message}`);
+            }
+        }
+
+        async function predictWater() {
+    const data = {
+        day_of_week: parseFloat(document.getElementById('day_of_week_water').value),
+        month: parseFloat(document.getElementById('month_water').value),
+        temperature: parseFloat(document.getElementById('temperature_water').value),
+        rainfall: parseFloat(document.getElementById('rainfall_water').value),
+        holiday: document.querySelector('input[name="holiday_water"]:checked')?.value || 0,
+        prev_day_water: parseFloat(document.getElementById('prev_day_water').value),
+        building_size: parseFloat(document.getElementById('building_size_water').value),
+        household_members: parseFloat(document.getElementById('household_members_water').value)
+    };
+
+    try {
+        const response = await fetch('http://localhost:5000/predict/water', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        if (result.error) {
+            alert(`Error: ${result.error}`);
+        } else {
+            alert(`Predicted Water Consumption: ${result.prediction}`);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert(`Error: ${error.message}`);
+    }
+}
     </script>
 
 </body>
