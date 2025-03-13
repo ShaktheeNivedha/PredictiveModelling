@@ -21,6 +21,12 @@ except FileNotFoundError as e:
     print(f"Error loading models: {e}")
     raise e
 
+# Root endpoint
+@app.route('/')
+def home():
+    return "Welcome to the Predictive Modelling API! Use /predict/energy or /predict/water to get predictions."
+
+# Energy prediction endpoint
 @app.route('/predict/energy', methods=['POST'])
 def predict_energy():
     try:
@@ -49,6 +55,7 @@ def predict_energy():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
+# Water prediction endpoint
 @app.route('/predict/water', methods=['POST'])
 def predict_water():
     try:
